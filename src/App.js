@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import appStyle from "./App.module.css";
 const KEY = "b9d76cd61601105b314fb40e7578a9ea";
 const URL = "https://api.openweathermap.org/data/2.5/weather?";
+
 function App() {
   const [searchCity, setSearchCity] = useState("");
   const [loading, setLoading] = useState(false);
@@ -15,7 +16,7 @@ function App() {
     setSearchCity(city);
     if (!city) {
       setErrorMessage("Please select a city");
-      setWeatherInfo(null);
+      setWeatherInfo("");
     }
   };
 
@@ -38,6 +39,7 @@ function App() {
           setErrorMessage("");
         } else {
           setErrorMessage(data.message);
+          setWeatherInfo(null);
         }
       } catch (error) {
         setErrorMessage(error.message);
